@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiago Meira — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --glass: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.10);
+  --red: #e10600;
+  --red-glow: #ff2b2b;
+  --text: #f5f2ed;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'League Spartan', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1000px; margin: auto; padding: 0 20px; position: relative; z-index: 2; }
+
+/* ===== FOND ===== */
+.orb { position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
+.orb-1 { width: 550px; height: 550px; background: radial-gradient(circle, rgba(225,6,0,0.14), transparent 70%); top: -180px; left: -160px; animation: orbFloat 16s ease-in-out infinite; }
+.orb-2 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(225,6,0,0.10), transparent 70%); bottom: -140px; right: -120px; animation: orbFloat2 19s ease-in-out infinite; }
+@keyframes orbFloat  { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-25px)} }
+@keyframes orbFloat2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,20px)} }
+
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+/* ===== GLASS ===== */
+.glass { background: var(--glass); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--border); position: relative; overflow: hidden; }
+.glass-glow::before {
+  content: ""; position: absolute; width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(225,6,0,0.2), transparent 65%); filter: blur(20px);
+  pointer-events: none; transform: translate(-50%,-50%);
+  left: var(--gx,-999px); top: var(--gy,-999px); z-index: 0; opacity: 0; transition: opacity 0.4s;
+}
+.glass-glow:hover::before { opacity: 1; }
+.glass-glow > * { position: relative; z-index: 1; }
+
+/* ===== NAVBAR ===== */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 18px 20px 0; }
+.header-pill {
+  max-width: 1000px; margin: auto; display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,10,0.55); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50px; padding: 12px 24px;
+}
+.logo { font-weight: 900; letter-spacing: 1px; font-size: 1.05rem; }
+.logo span { color: var(--red); }
+.nav a { margin: 0 12px; font-weight: 700; opacity: 0.8; font-size: 0.85rem; transition: 0.2s; }
+.nav a:hover { color: var(--red-glow); opacity: 1; }
+.header-contact-btn {
+  padding: 9px 20px; border-radius: 999px; color: var(--red-glow); font-weight: 800; font-size: 0.85rem;
+  border: 1.5px solid rgba(225,6,0,0.4); background: rgba(225,6,0,0.08); transition: 0.25s;
+}
+.header-contact-btn:hover { background: rgba(225,6,0,0.18); border-color: var(--red); }
+@media (max-width: 700px) { .nav, .header-contact-btn { display: none; } }
+
+/* ===== HERO / PROFIL ===== */
+.hero { padding: 160px 0 60px; }
+.profile-row {
+  display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+  animation: fadeInUp 0.7s ease both;
+}
+
+/* ===== PHOTO BLOB / JELLYBEAN (grande, organique) ===== */
+.profile-photo-wrap {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 25px 45px rgba(225,6,0,0.28));
+}
+
+.profile-photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  background: linear-gradient(135deg, var(--red), var(--red-glow));
+  border-radius: 63% 37% 54% 46% / 45% 41% 59% 55%;
+  z-index: 0;
+  animation: blobMorph 9s ease-in-out infinite;
+}
+
+.profile-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 63% 37% 54% 46% / 45% 41% 59% 55%;
+  z-index: 1;
+  display: block;
+  animation: blobMorph 9s ease-in-out infinite;
+}
+
+@keyframes blobMorph {
+  0%, 100% { border-radius: 63% 37% 54% 46% / 45% 41% 59% 55%; }
+  25% { border-radius: 45% 55% 62% 38% / 58% 34% 66% 42%; }
+  50% { border-radius: 38% 62% 41% 59% / 40% 62% 38% 60%; }
+  75% { border-radius: 55% 45% 35% 65% / 62% 48% 52% 38%; }
+}
+
+.profile-info h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 4px; }
+.profile-info .role { color: var(--red-glow); font-weight: 700; font-size: 1rem; margin-bottom: 14px; letter-spacing: 0.5px; }
+.contact-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.contact-chip {
+  display: flex; align-items: center; gap: 7px; padding: 8px 16px; border-radius: 999px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 0.83rem; font-weight: 600;
+  transition: 0.2s;
+}
+.contact-chip:hover { border-color: rgba(225,6,0,0.4); color: var(--red-glow); }
+.contact-chip svg { width: 15px; height: 15px; color: var(--red-glow); }
+
+/* ===== SECTIONS ===== */
+section { padding: 50px 0; }
+.section-label { font-size: 0.75rem; font-weight: 800; color: var(--red-glow); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; display: block; }
+.section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; margin-bottom: 28px; text-transform: uppercase; }
+
+/* ===== ABOUT ===== */
+.about-box { padding: 32px; border-radius: 22px; }
+.about-box p { opacity: 0.7; line-height: 1.75; font-size: 0.97rem; }
+
+/* ===== SKILLS ===== */
+.skills-grid { display: flex; gap: 14px; flex-wrap: wrap; }
+.skill-chip {
+  padding: 12px 22px; border-radius: 14px; font-weight: 700; font-size: 0.9rem;
+  background: rgba(225,6,0,0.08); border: 1px solid rgba(225,6,0,0.25); color: var(--red-glow);
+  display: flex; align-items: center; gap: 8px; transition: 0.25s;
+}
+.skill-chip:hover { background: rgba(225,6,0,0.15); transform: translateY(-2px); }
+.skill-chip svg { width: 16px; height: 16px; }
+
+/* ===== TIMELINE (Education & Expérience) ===== */
+.timeline { display: flex; flex-direction: column; gap: 16px; }
+.tl-item {
+  padding: 26px 28px; border-radius: 20px; border-left: 3px solid var(--red);
+  transition: 0.25s;
+}
+.tl-item:hover { transform: translateX(4px); border-color: rgba(225,6,0,0.5); }
+.tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+.tl-header h3 { font-size: 1.05rem; font-weight: 800; }
+.tl-date { font-size: 0.78rem; font-weight: 800; color: var(--red-glow); background: rgba(225,6,0,0.1); padding: 4px 12px; border-radius: 999px; white-space: nowrap; border: 1px solid rgba(225,6,0,0.25); }
+.tl-sub { font-size: 0.85rem; opacity: 0.55; font-weight: 600; margin-bottom: 10px; }
+.tl-item p.desc { font-size: 0.9rem; opacity: 0.65; line-height: 1.6; }
+.tl-item.future { opacity: 0.55; border-left-style: dashed; }
+
+/* ===== INFO SUPP ===== */
+.quote-box { padding: 36px; border-radius: 24px; text-align: center; }
+.quote-box h3 { font-size: 1.3rem; font-weight: 900; color: var(--red-glow); margin-bottom: 14px; }
+.quote-box p { opacity: 0.65; line-height: 1.7; font-size: 0.95rem; max-width: 620px; margin: 0 auto; }
+
+/* ===== FOOTER ===== */
+footer { padding: 40px 0; text-align: center; opacity: 0.4; font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 20px; }
+
+@media (max-width: 600px) {
+  .profile-row { flex-direction: column; text-align: center; align-items: center; }
+  .profile-photo-wrap { width: 200px; height: 200px; }
+  .contact-row { justify-content: center; }
+  .tl-header { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<header>
+  <div class="header-pill">
+    <div class="logo">TIAGO <span>MEIRA</span></div>
+    <nav class="nav">
+      <a href="#about">À propos</a>
+      <a href="#skills">Compétences</a>
+      <a href="#education">Formation</a>
+      <a href="#experience">Expérience</a>
+    </nav>
+    <a class="header-contact-btn" href="mailto:tiago.meira@studentmail.fr">Me contacter</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ===== HERO / PROFIL ===== -->
+  <section class="hero">
+    <div class="profile-row">
+      <div class="profile-photo-wrap">
+        <img src="photo.png" alt="Tiago Meira" class="profile-photo">
+      </div>
+      <div class="profile-info">
+        <h1>Tiago Meira</h1>
+        <div class="role">Étudiant — Réseaux & Cybersécurité</div>
+        <div class="contact-row">
+          <a class="contact-chip" href="tel:+33603420003">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +33 6 03 42 00 03
+          </a>
+          <a class="contact-chip" href="mailto:tiago.meira@studentmail.fr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            tiago.meira@studentmail.fr
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== À PROPOS ===== -->
+  <section id="about">
+    <span class="section-label">À propos de moi</span>
+    <h2 class="section-title">Qui suis-je ?</h2>
+    <div class="about-box glass glass-glow">
+      <p>Je suis fan d'informatique depuis tout petit : je développe activement mes compétences en réseaux, en virtualisation, en infrastructure physique... Grâce à mes projets personnels, tels que la création de homelabs, j'approfondis ma maîtrise des environnements techniques et je progresse au quotidien.</p>
+    </div>
+  </section>
+
+  <!-- ===== COMPÉTENCES ===== -->
+  <section id="skills">
+    <span class="section-label">Compétences</span>
+    <h2 class="section-title">Ce que je sais faire</h2>
+    <div class="skills-grid">
+      <div class="skill-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Mise en place de systèmes informatiques
+      </div>
+      <div class="skill-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Bon niveau d'Anglais
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education">
+    <span class="section-label">Parcours</span>
+    <h2 class="section-title">Formation</h2>
+    <div class="timeline">
+      <div class="tl-item glass">
+        <div class="tl-header">
+          <h3>Collège du Val d'Ardière</h3>
+          <span class="tl-date">2022 — 2026</span>
+        </div>
+        <div class="tl-sub">Année scolaire</div>
+      </div>
+      <div class="tl-item glass">
+        <div class="tl-header">
+          <h3>Lycée Polyvalent Louis Armand — Campus Gleizé</h3>
+          <span class="tl-date">2025 — 2028</span>
+        </div>
+        <div class="tl-sub">2nde MTNE (Métier Transition Numérique et Énergétique)</div>
+        <p class="desc">Suivi d'un BAC PRO CIEL (Cybersécurité, Informatique et Réseaux, Électronique).</p>
+      </div>
+      <div class="tl-item glass future">
+        <div class="tl-header">
+          <h3>BTS SIO — Option SISR</h3>
+          <span class="tl-date">2028 — 2030</span>
+        </div>
+        <div class="tl-sub">Prochainement</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPÉRIENCE ===== -->
+  <section id="experience">
+    <span class="section-label">Parcours pro</span>
+    <h2 class="section-title">Expérience</h2>
+    <div class="timeline">
+      <div class="tl-item glass">
+        <div class="tl-header">
+          <h3>Hartmann Group</h3>
+          <span class="tl-date">2024</span>
+        </div>
+        <div class="tl-sub">Plateforme de transit — Belleville</div>
+        <p class="desc">Découverte de l'entreprise et de ses différents services, prise de connaissance de son environnement. Stage de découverte, d'observation et d'étude.</p>
+      </div>
+      <div class="tl-item glass">
+        <div class="tl-header">
+          <h3>Saint-Jean Industries</h3>
+          <span class="tl-date">2025</span>
+        </div>
+        <div class="tl-sub">Plateforme de transit, gestion, conception et fabrication — Belleville</div>
+        <p class="desc">Découverte de l'entreprise et de ses différents services, aide à la maintenance informatique. Stage de découverte, d'observation et d'étude.</p>
+      </div>
+      <div class="tl-item glass">
+        <div class="tl-header">
+          <h3>Saint-Jean Industries</h3>
+          <span class="tl-date">2026</span>
+        </div>
+        <div class="tl-sub">Plateforme de transit, gestion, conception et fabrication — Belleville</div>
+        <p class="desc">Re-découverte de l'entreprise et de ses nouveaux services, de l'infrastructure réseaux et mise en place de serveurs et services informatiques sous forme de LABS. Stage de découverte, d'observation et de fonction.</p>
+      </div>
+      <div class="tl-item glass">
+        <div class="tl-header">
+          <h3>2EFC ENERGIES</h3>
+          <span class="tl-date">2026</span>
+        </div>
+        <div class="tl-sub">Entreprise générale de bâtiment (TCE)</div>
+        <p class="desc">Découverte de l'entreprise, de son fonctionnement, de ses équipes. Travail apporté surtout dans la partie ELEC. Stage de fonction et de découverte.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INFO SUPP ===== -->
+  <section id="infos">
+    <span class="section-label">Info. supp.</span>
+    <h2 class="section-title">Ma philosophie</h2>
+    <div class="quote-box glass glass-glow">
+      <h3>Le Respect.</h3>
+      <p>Une base fondamentale trop peu exploitée aujourd'hui. J'admire les gens qui m'apprennent de nouvelles choses, qui m'aident à comprendre certains aspects que je n'aurais pas découverts seul. Je suis investi dans mon travail et essaye toujours de faire au mieux.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>© Tiago Meira — Tous droits réservés.</footer>
+
+<script>
+lucide.createIcons();
+document.querySelectorAll('.glass-glow').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.setProperty('--gx', '-999px');
+    el.style.setProperty('--gy', '-999px');
+  });
+});
+</script>
+</body>
+</html>
