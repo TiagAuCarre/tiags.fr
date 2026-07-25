@@ -147,6 +147,42 @@ section { padding: 50px 0; }
 .tl-item p.desc { font-size: 0.9rem; opacity: 0.65; line-height: 1.6; }
 .tl-item.future { opacity: 0.55; border-left-style: dashed; }
 
+/* ===== PROJETS ===== */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.project-card {
+  padding: 26px; border-radius: 20px; display: flex; flex-direction: column; gap: 12px;
+  transition: 0.25s;
+}
+.project-card:hover { transform: translateY(-4px); border-color: rgba(225,6,0,0.4); }
+.project-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.project-card-head h3 { font-size: 1rem; font-weight: 800; }
+.project-card-head svg { width: 18px; height: 18px; color: var(--red-glow); flex-shrink: 0; opacity: 0.8; }
+.project-card p { font-size: 0.86rem; opacity: 0.6; line-height: 1.55; flex-grow: 1; }
+.project-tag {
+  align-self: flex-start; font-size: 0.72rem; font-weight: 700; color: var(--red-glow);
+  background: rgba(225,6,0,0.1); border: 1px solid rgba(225,6,0,0.25); padding: 4px 12px; border-radius: 999px;
+}
+
+.project-card.more {
+  align-items: center; justify-content: center; text-align: center;
+  border-style: dashed; border-color: rgba(255,255,255,0.18);
+}
+.project-card.more:hover { border-color: rgba(225,6,0,0.5); }
+.more-label { font-weight: 800; font-size: 0.95rem; display: flex; align-items: baseline; gap: 2px; }
+.more-dots { display: inline-flex; width: 18px; }
+.more-dots span { opacity: 0; animation: dotBlink 1.4s infinite; font-weight: 900; }
+.more-dots span:nth-child(1) { animation-delay: 0s; }
+.more-dots span:nth-child(2) { animation-delay: 0.35s; }
+.more-dots span:nth-child(3) { animation-delay: 0.7s; }
+@keyframes dotBlink {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { opacity: 1; }
+  85%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+.more-icon { width: 32px; height: 32px; color: var(--red-glow); opacity: 0.85; margin-bottom: 4px; }
+
 /* ===== INFO SUPP ===== */
 .quote-box { padding: 36px; border-radius: 24px; text-align: center; }
 .quote-box h3 { font-size: 1.3rem; font-weight: 900; color: var(--red-glow); margin-bottom: 14px; }
@@ -176,6 +212,7 @@ footer { padding: 40px 0; text-align: center; opacity: 0.4; font-size: 0.8rem; b
       <a href="#skills">Compétences</a>
       <a href="#education">Formation</a>
       <a href="#experience">Expérience</a>
+      <a href="#projets">Mes projets</a>
     </nav>
     <a class="header-contact-btn" href="mailto:tiago.meira@studentmail.fr">Me contacter</a>
   </div>
@@ -298,6 +335,65 @@ footer { padding: 40px 0; text-align: center; opacity: 0.4; font-size: 0.8rem; b
         <div class="tl-sub">Entreprise générale de bâtiment (TCE)</div>
         <p class="desc">Découverte de l'entreprise, de son fonctionnement, de ses équipes. Travail apporté surtout dans la partie ELEC. Stage de fonction et de découverte.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== MES PROJETS ===== -->
+  <section id="projets">
+    <span class="section-label">GitHub</span>
+    <h2 class="section-title">Mes projets</h2>
+    <div class="projects-grid">
+
+      <a class="project-card glass glass-glow" href="https://github.com/TiagAuCarre/WimEditorGUI" target="_blank" rel="noopener">
+        <div class="project-card-head">
+          <h3>WimEditorGUI</h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <p>Éditeur graphique de fichiers WIM (images Windows), basé sur les utilitaires intégrés Windows.</p>
+        <span class="project-tag">Python</span>
+      </a>
+
+      <a class="project-card glass glass-glow" href="https://github.com/TiagAuCarre/campuskiwi-website" target="_blank" rel="noopener">
+        <div class="project-card-head">
+          <h3>campuskiwi-website</h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <p>Site web fictif pour l'école de RP Campus Kiwi de Beaujeu, en glassmorphism avec canvas animé.</p>
+        <span class="project-tag">Web</span>
+      </a>
+
+      <a class="project-card glass glass-glow" href="https://github.com/TiagAuCarre/iperf-gui" target="_blank" rel="noopener">
+        <div class="project-card-head">
+          <h3>iperf-gui</h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <p>Interface graphique Python simple pour piloter iPerf et tester les performances réseau.</p>
+        <span class="project-tag">Python</span>
+      </a>
+
+      <a class="project-card glass glass-glow" href="https://github.com/TiagAuCarre/iperf-cmd" target="_blank" rel="noopener">
+        <div class="project-card-head">
+          <h3>iperf-cmd</h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <p>Scripts batch pour automatiser des tests de débit réseau avec iPerf en ligne de commande.</p>
+        <span class="project-tag">Batch</span>
+      </a>
+
+      <a class="project-card glass glass-glow" href="https://github.com/TiagAuCarre/pronote-rp-campuskiwi" target="_blank" rel="noopener">
+        <div class="project-card-head">
+          <h3>pronote-rp-campuskiwi</h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <p>Reprise fictive de l'interface Pronote pour le projet de RP Campus Kiwi de Beaujeu.</p>
+        <span class="project-tag">Web</span>
+      </a>
+
+      <a class="project-card more glass glass-glow" href="https://github.com/TiagAuCarre" target="_blank" rel="noopener">
+        <svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18c-4.51 2-5-2-7-2m14 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <div class="more-label">Voir plus<span class="more-dots"><span>.</span><span>.</span><span>.</span></span></div>
+      </a>
+
     </div>
   </section>
 
