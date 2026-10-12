@@ -1,0 +1,9 @@
+{
+  "name": "tiago-meira-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "vite build", "lint": "eslint ." },
+  "dependencies": { "motion": "^14.1.0", "react": "^19.3.0", "react-dom": "^19.3.0" },
+  "devDependencies": { "@eslint/js": "^10.0.1", "@vitejs/plugin-react": "^6.1.2", "eslint": "^10.12.0", "eslint-plugin-react-hooks": "^7.1.1", "vite": "^8.3.4" }
+}
